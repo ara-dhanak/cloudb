@@ -1,0 +1,489 @@
+
+
+Usecase-1 
+
+Creating a repo, creating new branch, files and pushing to branch
+
+git branch cloudb_task
+git add README.md
+git status
+git commit -m "Readmefile"
+git push origin cloudb_task
+
+Usecase-2 and 3
+Create two new branch, push changes and merge it
+
+aradhana@ThinkPad MINGW64 ~/cloudb (cloudb_task)
+$ git branch Develop
+
+aradhana@ThinkPad MINGW64 ~/cloudb (cloudb_task)
+$ git branch Feature
+
+aradhana@ThinkPad MINGW64 ~/cloudb (cloudb_task)
+$ git branch
+  Develop
+  Feature
+* cloudb_task
+  main
+
+aradhana@ThinkPad MINGW64 ~/cloudb (cloudb_task)
+$ git checkout Develop
+Switched to branch 'Develop'
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Develop)
+$ ls -lrt
+total 2
+-rw-r--r-- 1 aradhana 197609  41 Oct 17 14:12 webhost_flow.sh
+-rw-r--r-- 1 aradhana 197609 251 Oct 17 16:18 README.md
+
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Develop)
+$ git add .
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Develop)
+$ git status
+On branch Develop
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   webhost_flow.sh
+
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Develop)
+$ git commit -m "modify post practice"
+[Develop 3bc6242] modify post practice
+ 1 file changed, 5 insertions(+)
+ create mode 100644 webhost_flow.sh
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Develop)
+$ git status
+On branch Develop
+nothing to commit, working tree clean
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Develop)
+$ git push orgin Develop
+fatal: 'orgin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Develop)
+$ git push origin Develop
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 337 bytes | 168.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'Develop' on GitHub by visiting:
+remote:      https://github.com/ara-dhanak/cloudb/pull/new/Develop
+remote:
+To https://github.com/ara-dhanak/cloudb.git
+ * [new branch]      Develop -> Develop
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Develop)
+$ git checkout Feature
+Switched to branch 'Feature'
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Feature)
+$ ls
+README.md
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Feature)
+$ touch feature-1.txt
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Feature)
+$ git add feature-1.txt
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Feature)
+$ git commit -m "Practice adding a feature"
+[Feature 4494346] Practice adding a feature
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 feature-1.txt
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Feature)
+$ git status
+On branch Feature
+nothing to commit, working tree clean
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Feature)
+$ git push origin Feature
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 298 bytes | 149.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'Feature' on GitHub by visiting:
+remote:      https://github.com/ara-dhanak/cloudb/pull/new/Feature
+remote:
+To https://github.com/ara-dhanak/cloudb.git
+ * [new branch]      Feature -> Feature
+
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Feature)
+$ git branch
+  Develop
+* Feature
+  cloudb_task
+  main
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Feature)
+$ git checkout Develop
+Switched to branch 'Develop'
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Develop)
+$ git merge Feature
+Merge made by the 'recursive' strategy.
+ feature-1.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 feature-1.txt
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Develop)
+$ git log
+commit b2714fb0f6f914359496132b44e0dc83150ceff3 (HEAD -> Develop)
+Merge: 3bc6242 4494346
+Author: Linuxara <aradhanakhadanga21@gmail.com>
+Date:   Mon Oct 17 16:45:37 2022 +0530
+
+    Merge branch 'Feature' into Develop
+
+commit 4494346fef8ace35f905eb2a02dee17526413ac4 (origin/Feature, Feature)
+Author: Linuxara <aradhanakhadanga21@gmail.com>
+Date:   Mon Oct 17 16:42:28 2022 +0530
+
+    Practice adding a feature
+
+commit 3bc6242f86504c5c51fc928f86ed8002c24fee63 (origin/Develop)
+Author: Linuxara <aradhanakhadanga21@gmail.com>
+Date:   Mon Oct 17 16:38:23 2022 +0530
+
+    modify post practice
+
+commit 297db81c604535cfa886b19d0bb90de3adfdc363 (origin/cloudb_task, cloudb_task)
+Author: Linuxara <aradhanakhadanga21@gmail.com>
+Date:   Mon Oct 17 16:20:03 2022 +0530
+
+    Readmefile
+
+commit 755d2bffa23aeb6b893e76c7dc4f8194eb1785de (origin/main, origin/HEAD, main)
+Author: ara_dhanak <66816559+ara-dhanak@users.noreply.github.com>
+Date:   Mon Oct 17 09:21:47 2022 +0530
+
+    Initial commit
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Develop)
+$ git status
+On branch Develop
+nothing to commit, working tree clean
+
+aradhana@ThinkPad MINGW64 ~/cloudb (Develop)
+$ git merge Feature
+Already up to date.
+
+
+Usecase-4
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$ git checkout test
+Switched to branch 'test'
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test)
+$ touch test1.txt
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test)
+$ touch test2.txt
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test)
+$ git checkout dev
+Switched to branch 'dev'
+
+aradhana@ThinkPad MINGW64 ~/cloudb (dev)
+$ touch dev1.sh
+
+aradhana@ThinkPad MINGW64 ~/cloudb (dev)
+$ touch dev2.sh
+
+aradhana@ThinkPad MINGW64 ~/cloudb (dev)
+$ git checkout branch
+error: pathspec 'branch' did not match any file(s) known to git
+
+aradhana@ThinkPad MINGW64 ~/cloudb (dev)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$ git merge dev
+Updating 755d2bf..b2714fb
+Fast-forward
+ README.md       | 10 ++++++++++
+ feature-1.txt   |  0
+ webhost_flow.sh |  5 +++++
+ 3 files changed, 15 insertions(+)
+ create mode 100644 feature-1.txt
+ create mode 100644 webhost_flow.sh
+
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$ git merge test
+Already up to date.
+
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$ git branch
+  Develop
+  Feature
+  cloudb_task
+  dev
+* main
+  test
+
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 4 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        dev1.sh
+        dev2.sh
+        test1.txt
+        test2.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$ git log
+commit b2714fb0f6f914359496132b44e0dc83150ceff3 (HEAD -> main, test, dev, Develop)
+commit b2714fb0f6f914359496132b44e0dc83150ceff3 (HEAD -> main, test, dev, Develop)
+Merge: 3bc6242 4494346
+Author: Linuxara <aradhanakhadanga21@gmail.com>
+Date:   Mon Oct 17 16:45:37 2022 +0530
+
+    Merge branch 'Feature' into Develop
+
+commit 4494346fef8ace35f905eb2a02dee17526413ac4 (origin/Feature, Feature)
+Author: Linuxara <aradhanakhadanga21@gmail.com>
+Date:   Mon Oct 17 16:42:28 2022 +0530
+
+    Practice adding a feature
+
+
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$
+
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$ git checkout test
+Switched to branch 'test'
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test)
+$ git add .
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test)
+$ git commit -m 'test'
+[test 20e6291] test
+ 4 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 dev1.sh
+ create mode 100644 dev2.sh
+ create mode 100644 test1.txt
+ create mode 100644 test2.txt
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test)
+$ git checkout dev
+Switched to branch 'dev'
+
+aradhana@ThinkPad MINGW64 ~/cloudb (dev)
+$ git add .
+
+aradhana@ThinkPad MINGW64 ~/cloudb (dev)
+$ git commit -m 'dev test'
+On branch dev
+nothing to commit, working tree clean
+
+aradhana@ThinkPad MINGW64 ~/cloudb (dev)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 4 commits.
+  (use "git push" to publish your local commits)
+
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$ git checkout dev
+Switched to branch 'dev'
+
+aradhana@ThinkPad MINGW64 ~/cloudb (dev)
+$ git push origin dev
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 365 bytes | 182.00 KiB/s, done.
+Total 2 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'dev' on GitHub by visiting:
+remote:      https://github.com/ara-dhanak/cloudb/pull/new/dev
+remote:
+To https://github.com/ara-dhanak/cloudb.git
+ * [new branch]      dev -> dev
+
+aradhana@ThinkPad MINGW64 ~/cloudb (dev)
+$ git checkout test
+Switched to branch 'test'
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test)
+$ git status
+On branch test
+nothing to commit, working tree clean
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test)
+$ git push origin test
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 333 bytes | 111.00 KiB/s, done.
+Total 2 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'test' on GitHub by visiting:
+remote:      https://github.com/ara-dhanak/cloudb/pull/new/test
+remote:
+To https://github.com/ara-dhanak/cloudb.git
+ * [new branch]      test -> test
+ 
+ 
+ Use case-5 (Unclear about this line add a text file in a new branch using stash)
+ 
+ ** Normally stash is used to saving the changes
+ 
+aradhana@ThinkPad MINGW64 ~/cloudb (test)
+$ git checkout test_branch
+Switched to branch 'test_branch'
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test_branch)
+$ touch file1.sh
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test_branch)
+$ touch file2.sh file3.txt
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test_branch)
+$ git branch testbranch2
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test_branch)
+$ git statsh
+git: 'statsh' is not a git command. See 'git --help'.
+
+The most similar command is
+        stash
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test_branch)
+$ git stash
+No local changes to save
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test_branch)
+$ git status
+On branch test_branch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file1.sh
+        file2.sh
+        file3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+aradhana@ThinkPad MINGW64 ~/cloudb (test_branch)
+$ git checkout testbranch2
+Switched to branch 'testbranch2'
+
+aradhana@ThinkPad MINGW64 ~/cloudb (testbranch2)
+$ git stash pop
+No stash entries found.
+
+aradhana@ThinkPad MINGW64 ~/cloudb (testbranch2)
+$ touch file.txt
+
+aradhana@ThinkPad MINGW64 ~/cloudb (testbranch2)
+$
+
+Usecase-6 (Delete all branches)
+
+
+aradhana@ThinkPad MINGW64 ~/cloudb (testbranch2)
+$ git branch
+  Develop
+  Feature
+  cloudb_task
+  dev
+  main
+  test
+  test_branch
+* testbranch2
+
+aradhana@ThinkPad MINGW64 ~/cloudb (testbranch2)
+$ git branch --delete Develop Feature dev test test
+test          test_branch   testbranch2
+
+aradhana@ThinkPad MINGW64 ~/cloudb (testbranch2)
+$ git branch --delete Develop Feature dev test testbranch2 testbranch
+error: Cannot delete branch 'testbranch2' checked out at 'C:/Users/aradhana/cloudb'
+error: branch 'testbranch' not found.
+Deleted branch Develop (was b2714fb).
+Deleted branch Feature (was 4494346).
+Deleted branch dev (was b2714fb).
+Deleted branch test (was 20e6291).
+
+aradhana@ThinkPad MINGW64 ~/cloudb (testbranch2)
+$ git branch
+  cloudb_task
+  main
+  test_branch
+* testbranch2
+
+aradhana@ThinkPad MINGW64 ~/cloudb (testbranch2)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 4 commits.
+  (use "git push" to publish your local commits)
+
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$ git branch --delete test_branch testbranch2
+error: The branch 'test_branch' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D test_branch'.
+error: The branch 'testbranch2' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D testbranch2'.
+
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$ git branch -a
+  cloudb_task
+* main
+  test_branch
+  testbranch2
+  remotes/origin/Develop
+  remotes/origin/Feature
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/cloudb_task
+  remotes/origin/dev
+  remotes/origin/main
+  remotes/origin/test
+
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$ git branch -D test_branch testbranch2
+Deleted branch test_branch (was 20e6291).
+Deleted branch testbranch2 (was 20e6291).
+
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$ git branch -a
+  cloudb_task
+* main
+  remotes/origin/Develop
+  remotes/origin/Feature
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/cloudb_task
+  remotes/origin/dev
+  remotes/origin/main
+  remotes/origin/test
+
+aradhana@ThinkPad MINGW64 ~/cloudb (main)
+$
+
+
+
